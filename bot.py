@@ -259,7 +259,7 @@ def callback(call):
         return
 
     if data.startswith("menu_section:"):
-    root = data.split(":", 1)[1]
+        root = data.split(":", 1)[1]
 
     bot.edit_message_text(
         f"📚 Выбери подраздел раздела {root}:",
