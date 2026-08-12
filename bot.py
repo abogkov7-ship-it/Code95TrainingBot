@@ -261,13 +261,13 @@ def callback(call):
     if data.startswith("menu_section:"):
         root = data.split(":", 1)[1]
 
-    bot.edit_message_text(
-        f"📚 Выбери подраздел раздела {root}:",
-        chat_id=chat_id,
-        message_id=call.message.message_id,
-        reply_markup=section_menu(root)
-    )
-    return
+        bot.edit_message_text(
+            f"📚 Выбери подраздел раздела {root}:",
+            chat_id=chat_id,
+            message_id=call.message.message_id,
+            reply_markup=section_menu(root)
+        )
+        return
 
     if data.startswith("start_section:"):
         sec = data.split(":", 1)[1]
