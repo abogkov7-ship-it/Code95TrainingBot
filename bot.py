@@ -248,24 +248,25 @@ def callback(call):
     data = call.data
 
     if data == "home":
-        sessions.pop(chat_id, None)
+    sessions.pop(chat_id, None)
 
-        bot.send_message(
-            chat_id,
-            "Главное меню:",
-            reply_markup=main_menu()
-        )
-        return
+    bot.send_message(
+        chat_id,
+        "Главное меню:",
+        reply_markup=main_menu()
+    )
+    return
 
     if data.startswith("menu_section:"):
-        root = data.split(":", 1)[1]
+    root = data.split(":", 1)[1]
 
-        bot.send_message(
-            chat_id,
-            f"Выбери подраздел раздела {root}:",
-            reply_markup=section_menu(root)
-        )
-        return
+    bot.edit_message_text(
+        f"📚 Выбери подраздел раздела {root}:",
+        chat_id=chat_id,
+        message_id=call.message.message_id,
+        reply_markup=section_menu(root)
+    )
+    return
 
     if data.startswith("start_section:"):
         sec = data.split(":", 1)[1]
